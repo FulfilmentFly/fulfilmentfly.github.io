@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Fulfillment Fly — упаковка и подготовка товаров для маркетплейсов</title>
   <meta name="yandex-verification" content="6426d211c6ae7eb2" />
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Fulfillment Fly — полный цикл подготовки товара для маркетплейсов: забор, проверка, маркировка, упаковка, доставка. Мы созданы, чтобы помогать!">
   <meta name="keywords" content="фулфилмент, упаковка, маркировка, маркетплейс, Wildberries, Ozon, логистика, склад, подготовка товара">
   <meta name="theme-color" content="#000000">
@@ -44,7 +44,7 @@
     p { margin:0 0 1em; }
     a { color:var(--accent); text-decoration:none; }
     a:hover { text-decoration:underline; }
-    button {
+    .btn, button {
       font-family:inherit;
       cursor:pointer;
       border:none;
@@ -52,23 +52,24 @@
       color:#fff;
       padding:14px 26px;
       font-size:15px;
-      font-weight:600;
+      font-weight:700;
       letter-spacing:.5px;
       border-radius:30px;
       transition:.25s;
       box-shadow:0 6px 18px -4px rgba(var(--accent-rgb),.45);
+      display:inline-block;
     }
-    button:hover { transform:translateY(-2px); box-shadow:0 10px 26px -6px rgba(var(--accent-rgb),.55); }
-    button.outline {
+    .btn:hover, button:hover { transform:translateY(-2px); box-shadow:0 10px 26px -6px rgba(var(--accent-rgb),.55); }
+    .btn.outline {
       background:transparent;
       color:var(--text);
       border:1px solid var(--border);
       box-shadow:none;
     }
-    button.outline:hover { background:var(--bg-alt); }
+    .btn.outline:hover { background:var(--bg-alt); }
     header {
       position:fixed;top:0;left:0;right:0;
-      display:flex;align-items:center;justify-content:space-between;
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
       padding:14px 52px;
       backdrop-filter:blur(12px);
       background:rgba(255,255,255,0.7);
@@ -78,15 +79,18 @@
     [data-theme="dark"] header { background:rgba(11,12,13,.75); }
     .logo { font-size:20px;font-weight:800;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px; }
     .logo span.fly { background:linear-gradient(90deg,var(--accent),#ff7b47);-webkit-background-clip:text;color:transparent; }
-    nav { display:flex; gap:34px; }
+    nav { display:flex; gap:26px; align-items:center; }
     nav a {
-      font-size:14px;font-weight:500;text-transform:uppercase;letter-spacing:.8px;position:relative;padding:6px 4px;
+      font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;position:relative;padding:6px 4px;color:var(--text);
     }
     nav a:after {
       content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent);transition:.3s;
     }
     nav a:hover:after, nav a.active:after { width:100%; }
     .actions { display:flex;align-items:center;gap:18px; }
+    .header-contacts { display:flex;flex-direction:column;gap:4px;text-align:right; }
+    .header-contacts a.tel { font-weight:800;color:var(--text); font-size:14px; }
+    .header-contacts a.tg { font-size:13px;color:var(--accent); font-weight:700;}
     .theme-toggle {
       width:44px;height:44px;border-radius:50%;background:var(--bg-alt);
       display:grid;place-items:center;border:1px solid var(--border);
@@ -99,13 +103,13 @@
       padding:140px 52px 80px;position:relative;
       background:radial-gradient(circle at 80% 20%,rgba(var(--accent-rgb),.18),transparent 60%),linear-gradient(180deg,var(--bg),var(--bg));
     }
-    .hero-content { max-width:650px;z-index:2; }
+    .hero-content { max-width:700px;z-index:2; }
     .hero h1 { font-size:clamp(40px,8vw,78px);font-weight:800;margin-bottom:.4em; }
     .hero h1 .highlight { background:linear-gradient(90deg,var(--accent),#ff8f54);-webkit-background-clip:text;color:transparent; }
-    .hero p { font-size:clamp(16px,2vw,22px);font-weight:300;color:var(--muted);margin-bottom:1.4em; }
-    .hero-contact-inline { margin-top:14px;font-size:14px;color:var(--muted); }
-    .hero-contact-inline a { font-weight:600; }
+    .hero p { font-size:clamp(16px,2vw,22px);font-weight:300;color:var(--muted);margin-bottom:1.2em; }
     .hero-buttons { display:flex;flex-wrap:wrap;gap:16px; }
+    .hero-contact-inline { margin-top:14px;font-size:14px;color:var(--muted); }
+    .hero-contact-inline a { font-weight:700; color:var(--text);}
     .hero-media {
       position:absolute;right:0;top:0;bottom:0;width:45%;
       display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:.9;
@@ -143,695 +147,275 @@
       background:linear-gradient(135deg,var(--accent),#ff8f54);color:#fff;font-size:20px;font-weight:700;border-radius:18px;
       box-shadow:0 10px 20px -10px rgba(var(--accent-rgb),.6);
     }
-    table.price {
-      width:100%;border-collapse:collapse;font-size:14px;
-      overflow:hidden;border:1px solid var(--border);border-radius:18px;
-    }
-    table.price thead { background:var(--bg-alt); }
-    table.price th,table.price td { padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top; }
-    table.price th { font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600; }
-    table.price tbody tr.group-row td {
-      background:var(--bg-alt);font-weight:700;font-size:13px;letter-spacing:.7px;text-transform:uppercase;color:var(--accent);
-    }
-    table.price tbody tr:last-child td { border-bottom:none; }
-    table.price tbody tr:hover:not(.group-row) { background:var(--bg-alt); }
-    .note { font-size:12px;color:var(--muted);margin-top:14px;line-height:1.5; }
-    .offers { display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); }
-    .offer {
-      position:relative;padding:34px 30px 40px;border-radius:32px;
-      background:linear-gradient(135deg,#181a1d,#0c0d0e 60%);color:#fff;overflow:hidden;
-    }
-    .offer:after { content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,rgba(var(--accent-rgb),.5),transparent 60%),radial-gradient(circle at 85% 80%,rgba(255,255,255,.14),transparent 60%);mix-blend-mode:screen;pointer-events:none; }
-    .offer h3 { font-size:30px;margin:0 0 10px; }
-    .offer p { color:#d0d6dc; }
-    .badge-floating {
-      position:absolute;top:20px;right:20px;
-      background:rgba(255,255,255,.08);padding:10px 16px;font-size:12px;text-transform:uppercase;letter-spacing:1px;
-      border:1px solid rgba(255,255,255,.18);border-radius:30px;font-weight:600;
-    }
-    .news-list { display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
-    .news-item {
-      padding:24px 22px 28px;background:var(--bg-alt);border:1px solid var(--border);border-radius:24px;
-      display:flex;flex-direction:column;gap:10px;transition:.3s;
-    }
-    .news-item:hover { box-shadow:var(--shadow);transform:translateY(-3px); }
-    .news-item h4 { margin:0;font-size:18px; }
-    .news-item time { font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:600;color:var(--accent); }
-    .faq { max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:18px; }
-    .faq-item { border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--bg-alt); }
-    .faq-item summary { list-style:none;cursor:pointer;padding:20px 24px;font-weight:600;position:relative; }
-    .faq-item summary::-webkit-details-marker { display:none; }
-    .faq-item summary:after { content:"+";position:absolute;right:24px;top:20px;font-weight:400;transition:.3s; }
-    .faq-item[open] summary:after { transform:rotate(45deg); }
-    .faq-item .content { padding:0 24px 22px;font-size:15px;color:var(--muted); }
-    form.contact-form { max-width:640px;display:flex;flex-direction:column;gap:18px;margin-top:20px; }
-    form.contact-form input, form.contact-form textarea {
-      width:100%;padding:16px 18px;border:1px solid var(--border);border-radius:16px;
-      background:var(--bg-alt);color:var(--text);font-family:inherit;font-size:15px;resize:vertical;outline:none;transition:.25s;
-    }
-    form.contact-form input:focus, form.contact-form textarea:focus { border-color:var(--accent);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.25); }
-    .inline-note { font-size:12px;color:var(--muted);margin-top:-6px; }
-    .telegram-btn {
-      display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:40px;
-      background:#229ED9;color:#fff;font-weight:600;font-size:15px;text-decoration:none;
-      box-shadow:0 8px 20px -6px rgba(34,158,217,.6);transition:.3s;
-    }
-    .telegram-btn:hover { transform:translateY(-3px);text-decoration:none;box-shadow:0 12px 28px -8px rgba(34,158,217,.75); }
+    table.price { width:100%;border-collapse:collapse;font-size:14px; }
+    table.price th, table.price td { padding:12px 10px;border-bottom:1px solid var(--border);text-align:left; }
+    table.price th { font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted); }
+    table.price tr:hover td { background:rgba(0,0,0,.02); }
     footer {
-      padding:70px 52px 50px;background:var(--bg-alt);border-top:1px solid var(--border);margin-top:40px;
+      padding:40px 52px;border-top:1px solid var(--border);color:var(--muted);
+      display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
     }
-    .footer-grid { display:grid;gap:40px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
-    .footer-col h4 { margin:0 0 14px;font-size:16px;letter-spacing:1px;text-transform:uppercase; }
-    .footer-col ul { list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px; }
-    .footer-col a { font-size:14px;font-weight:500; }
-    .branding-foot { margin-top:50px;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);text-align:center; }
-    .floating-contact {
-      position:fixed;right:24px;bottom:24px;z-index:100;display:flex;flex-direction:column;gap:12px;
+    /* Офферы в герое */
+    .hero-offers {
+      list-style:none; padding:0; margin:16px 0 22px;
+      display:grid; gap:10px;
     }
-    .floating-contact a {
-      width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
-      background:#229ED9;box-shadow:0 10px 30px -10px rgba(34,158,217,.7);
-      color:#fff;font-size:22px;font-weight:700;text-decoration:none;transition:.3s;
+    .hero-offers li {
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px; border:1px solid var(--border); border-radius:12px;
+      background:var(--bg-alt); font-size:15px; font-weight:700; color:var(--text);
     }
-    .floating-contact a.phone { background:#25a55f;box-shadow:0 10px 30px -10px rgba(37,165,95,.6); }
-    .floating-contact a.phone:hover { box-shadow:0 12px 32px -10px rgba(37,165,95,.75); }
-    .floating-contact a:hover { transform:translateY(-5px); }
-    .toast {
-      position:fixed;left:50%;bottom:-100px;transform:translateX(-50%);
-      background:var(--text);color:var(--bg);padding:16px 26px;font-size:14px;border-radius:40px;
-      box-shadow:0 10px 30px -10px rgba(0,0,0,.35);opacity:0;transition:.6s cubic-bezier(.4,.8,.2,1);z-index:120;
+    .hero-offers li:before {
+      content:""; width:8px; height:8px; border-radius:50%;
+      background:var(--accent); margin-top:6px; flex:0 0 8px;
+      box-shadow:0 0 0 4px rgba(var(--accent-rgb),.08);
     }
-    .toast.show { bottom:28px;opacity:1; }
-    .lazy-animate { opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.35,.9,.25,1); }
-    .lazy-animate.visible { opacity:1;transform:translateY(0); }
-    @media (max-width:1200px){
-      .hero-media { position:relative;width:100%;order:2;margin-top:60px; }
-      .hero { flex-direction:column;padding-top:130px; }
-      .hero-box { width:100%; }
+    /* Адаптив */
+    @media (max-width: 1100px) {
+      .hero-media { display:none; }
     }
-    @media (max-width:960px){
-      header { padding:12px 26px; }
+    @media (max-width: 900px) {
+      header { padding:12px 18px; gap:12px; }
       nav { display:none; }
-      .hero { padding:120px 26px 70px; }
-      section { padding:100px 26px 70px; }
-      footer { padding:60px 26px 40px; }
-    }
-    @media (max-width:640px){
-      .hero h1 { font-size:42px; }
-      .hero-box h3 { font-size:24px; }
-      .hero-contact-inline { font-size:13px; }
-      table.price th,table.price td { font-size:12px;padding:8px 10px; }
+      .actions { gap:10px; }
+      section { padding:90px 18px 60px; }
+      .hero { padding:110px 18px 60px; }
     }
   </style>
-  <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"Organization",
-      "name":"Fulfillment Fly",
-      "url":"https://fulfillmentfly.example",
-      "description":"Фулфилмент услуги: забор, проверка, маркировка, упаковка, доставка до маркетплейсов.",
-      "sameAs":["https://t.me/FulfillmentFly","tel:+79660049292"],
-      "logo":"https://fulfillmentfly.example/logo.png",
-      "telephone":"+7-966-004-92-92",
-      "email":"mailto:fulfilmentfly@gmail.com",
-      "contactPoint":{
-        "@type":"ContactPoint",
-        "contactType":"customer support",
-        "telephone":"+7-966-004-92-92",
-        "email":"fulfilmentfly@gmail.com",
-        "availableLanguage":["Russian"]
-      }
-    }
-  </script>
 </head>
 <body>
   <header>
-    <div class="logo">Fulfillment <span class="fly">Fly</span></div>
+    <div class="logo">
+      <span>Fulfillment</span><span class="fly">Fly</span>
+    </div>
+
     <nav>
-      <a href="#about">О нас</a>
-      <a href="#services">Услуги</a>
-      <a href="#process">Процесс</a>
-      <a href="#price">Прайс</a>
-      <a href="#offers">Акции</a>
-      <a href="#news">Новости</a>
-      <a href="#contact">Контакты</a>
+      <a href="#services" class="active">Услуги</a>
+      <a href="#pricing">Тарифы</a>
+      <a href="#how">Как это работает</a>
+      <a href="#contacts">Контакты</a>
     </nav>
+
     <div class="actions">
-      <button class="outline" id="scrollToPrice">Прайс</button>
-      <div class="theme-toggle" id="themeToggle" aria-label="Сменить тему">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-          <path d="M12 3a1 1 0 0 1 1 1 7 7 0 0 0 7 7 1 1 0 0 1 0 2 7 7 0 0 0-7 7 1 1 0 0 1-2 0 7 7 0 0 0-7-7 1 1 0 0 1 0-2 7 7 0 0 0 7-7 1 1 0 0 1 1-1Z" fill="currentColor"/>
+      <div class="header-contacts">
+        <a class="tel" href="tel:+79660049292">+7 966 004-92-92</a>
+        <a class="tg" href="https://t.me/FulfillmentFly" target="_blank" rel="noopener">@FulfillmentFly в Telegram</a>
+      </div>
+      <div class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" stroke="currentColor" stroke-width="1.6"/>
         </svg>
       </div>
     </div>
   </header>
+
   <main>
     <section class="hero" id="top">
-      <div class="hero-content lazy-animate">
-        <h1>Мы созданы, <span class="highlight">чтобы помогать</span> продавать быстрее</h1>
-        <p>Fulfillment Fly — полный цикл подготовки товаров для маркетплейсов: забираем, проверяем, маркируем, упаковываем и доставляем. Вы — продажи. Мы — подготовка.</p>
+      <div class="hero-content">
+        <h1>
+          Fulfillment Fly — упаковка и подготовка товаров
+          <span class="highlight">для маркетплейсов</span>
+        </h1>
+        <p>Полный цикл: забор, проверка, маркировка, упаковка, доставка. Мы созданы, чтобы помогать.</p>
+
+        <ul class="hero-offers">
+          <li>Счёт без скрытых платежей</li>
+          <li>Развитая система логистики</li>
+          <li>Обрабатываем до 10&nbsp;000 единиц в день</li>
+          <li>Упаковка и логистика за 72 часа · Фулфилмент по FBO и FBS</li>
+        </ul>
+
+        <div class="hero-buttons">
+          <a class="btn" href="https://t.me/FulfillmentFly" target="_blank" rel="noopener">Написать в Telegram</a>
+          <a class="btn outline" href="#services">Смотреть услуги</a>
+        </div>
+
         <div class="hero-contact-inline">
-          Telegram: <a href="https://t.me/FulfillmentFly" target="_blank" rel="noopener">@FulfillmentFly</a> · Телефон: <a href="tel:+79660049292">+7 966 004 92 92</a> · Email: <a href="mailto:fulfilmentfly@gmail.com">fulfilmentfly@gmail.com</a>
-        </div>
-        <div class="hero-buttons" style="margin-top:20px;">
-          <button onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Связаться</button>
-          <button class="outline" onclick="document.querySelector('#services').scrollIntoView({behavior:'smooth'})">Подробнее</button>
+          Или звоните: <a href="tel:+79660049292">+7 966 004-92-92</a>
         </div>
       </div>
+
       <div class="hero-media">
-        <div class="hero-box lazy-animate">
-          <div class="badge">Realtime</div>
-          <h3>Прозрачный поток</h3>
-          <span class="caption">Онбординг за 15 минут. Статусы партий. Фотофиксация. Контроль статусов.</span>
+        <div class="hero-box">
+          <span class="badge">72 часа</span>
+          <h3>Готовим партии быстро</h3>
+          <span class="caption">Сборка, упаковка, маркировка — в срок</span>
         </div>
       </div>
     </section>
-    <section id="about">
-      <div class="section-narrow">
-        <div class="section-head">
-          <div>
-            <h2 class="lazy-animate">Кто мы</h2>
-            <p class="lead lazy-animate">Мы закрываем операции до склада маркетплейса без хаоса и задержек — прозрачный контроль и гибкая стоимость.</p>
-          </div>
-          <div class="lazy-animate">
-            <button onclick="document.querySelector('#process').scrollIntoView({behavior:'smooth'})">Как это работает</button>
-          </div>
+
+    <section id="services" class="section-narrow">
+      <div class="section-head">
+        <h2>Услуги фулфилмента</h2>
+        <p class="lead">Готовим товары к продаже на маркетплейсах: аккуратно, быстро и по прозрачной цене.</p>
+      </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="icon">P</div>
+          <h3>Приём и проверка</h3>
+          <p>Проверяем соответствие заказу, целостность, комплектацию. Фиксируем расхождения.</p>
         </div>
-        <div class="grid cols-3">
-          <div class="card lazy-animate">
-            <div class="icon">1</div>
-            <h3>Скорость</h3>
-            <p>Приём и старт обработки в день поступления.</p>
-          </div>
-          <div class="card lazy-animate">
-            <div class="icon">2</div>
-            <h3>Контроль</h3>
-            <p>Фото брака, отчёты, подтверждения операций без догадок.</p>
-          </div>
-          <div class="card accent lazy-animate">
-            <h3>Фокус на рост</h3>
-            <p>Освобождаем время под ассортимент и продвижение.</p>
-          </div>
+        <div class="card">
+          <div class="icon">M</div>
+          <h3>Маркировка и стикеровка</h3>
+          <p>Печать и нанесение штрих‑кодов, QR, УПД. Соответствие требованиям WB и Ozon.</p>
+        </div>
+        <div class="card">
+          <div class="icon">U</div>
+          <h3>Упаковка</h3>
+          <p>Подбор тары, плёнки, термоусадка и крафт. Защита от повреждений и влаги.</p>
+        </div>
+        <div class="card">
+          <div class="icon">K</div>
+          <h3>Комплектация наборов</h3>
+          <p>Сборка SKU‑наборов, бандлы и подарочные комплекты. Фото‑контроль.</p>
+        </div>
+        <div class="card">
+          <div class="icon">L</div>
+          <h3>Логистика</h3>
+          <p>Забор со склада, доставка до маркетплейса. Планирование отгрузок, слоты.</p>
+        </div>
+        <div class="card accent">
+          <h3>Экспресс‑подготовка за 72 часа</h3>
+          <p>Приоритетный поток: упаковка и логистика в срок. Подходит для срочных партий и акций.</p>
+          <a class="btn" href="https://t.me/FulfillmentFly" target="_blank" rel="noopener">Связаться в Telegram</a>
         </div>
       </div>
     </section>
-    <section id="services">
-      <div class="section-narrow">
-        <div class="section-head">
-          <div>
-            <h2 class="lazy-animate">Услуги</h2>
-            <p class="lead lazy-animate">Модульная модель: подключайте ровно те операции, которые нужны сейчас.</p>
-          </div>
-          <div class="lazy-animate">
-            <button class="outline" onclick="filterServices('Все')">Сбросить фильтр</button>
-          </div>
-        </div>
-        <div class="services-filter lazy-animate" id="servicesFilter"></div>
-        <div class="grid cols-3" id="servicesGrid"></div>
+
+    <section id="pricing" class="section-narrow">
+      <div class="section-head">
+        <h2>Тарифы</h2>
+        <p class="lead">Счёт без скрытых платежей. Прозрачно, понятно, по факту работ.</p>
+      </div>
+      <div class="card" style="overflow:auto">
+        <table class="price">
+          <thead>
+            <tr>
+              <th>Услуга</th>
+              <th>Ед. изм.</th>
+              <th>Цена, ₽</th>
+              <th>Комментарий</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Приёмка и проверка</td>
+              <td>ед.</td>
+              <td>от 10</td>
+              <td>По объёму партии</td>
+            </tr>
+            <tr>
+              <td>Маркировка (штрих‑код/QR)</td>
+              <td>ед.</td>
+              <td>от 7</td>
+              <td>Материалы включены</td>
+            </tr>
+            <tr>
+              <td>Упаковка (плёнка/крафт)</td>
+              <td>ед.</td>
+              <td>от 20</td>
+              <td>Подбор тары по SKU</td>
+            </tr>
+            <tr>
+              <td>Комплектация набора</td>
+              <td>набор</td>
+              <td>от 25</td>
+              <td>По ТЗ клиента</td>
+            </tr>
+            <tr>
+              <td>Логистика до МП</td>
+              <td>рейс</td>
+              <td>индивидуально</td>
+              <td>Зависит от маршрута</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
-    <section id="process">
-      <div class="section-narrow">
-        <div class="section-head">
-          <div>
-            <h2 class="lazy-animate">Процесс</h2>
-            <p class="lead lazy-animate">Стандартизированные шаги — предсказуемый результат.</p>
-          </div>
-        </div>
-        <div class="grid cols-3">
-          <div class="card lazy-animate"><h3>1. Забор</h3><p>Организуем получение товара у поставщика или на рынке.</p></div>
-          <div class="card lazy-animate"><h3>2. Приёмка</h3><p>Пересчёт, идентификация, осмотр, фиксация брака.</p></div>
-          <div class="card lazy-animate"><h3>3. Маркировка</h3><p>Наносим ШК, бирки, формируем наборы.</p></div>
-          <div class="card lazy-animate"><h3>4. Упаковка</h3><p>Подбор оптимального материала, размеры — экономия объёма.</p></div>
-          <div class="card lazy-animate"><h3>5. Формирование поставки</h3><p>Короба / паллеты, маркировка, подготовка маршрута.</p></div>
-          <div class="card lazy-animate"><h3>6. Доставка</h3><p>Передаём на склад маркетплейса, подтверждаем отгрузку.</p></div>
-        </div>
+
+    <section id="how" class="section-narrow">
+      <div class="section-head">
+        <h2>Как это работает</h2>
+        <p class="lead">Простая схема, чтобы вы быстро вышли в продажу.</p>
       </div>
-    </section>
-    <section id="price">
-      <div class="section-narrow">
-        <div class="section-head">
-          <div>
-            <h2 class="lazy-animate">Прайс</h2>
-            <p class="lead lazy-animate">Актуальные базовые ставки. Итог зависит от объёмов, частоты и специфики товара.</p>
-          </div>
-          <div class="lazy-animate">
-            <button onclick="downloadPrice()">Скачать прайс (txt)</button>
-          </div>
+      <div class="grid cols-3">
+        <div class="card">
+          <div class="icon">1</div>
+          <h3>Заявка в Telegram</h3>
+          <p>Напишите нам — согласуем позицию, объёмы и сроки.</p>
         </div>
-        <div class="lazy-animate" style="overflow-x:auto;">
-          <table class="price" id="priceTable">
-            <thead>
-              <tr>
-                <th>Группа / Услуга</th>
-                <th>Ед.</th>
-                <th>Цена</th>
-                <th>Комментарий</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-          <div class="note">
-            Примечания:<br>
-            • Цены "от" — базовые при стандартной сложности. <br>
-            • Индивидуальные услуги и крупные объёмы — по договорённости. <br>
-            • Материалы включены там, где указано "с учётом материала". <br>
-            • Форматы упаковки и дополнительные размеры — доступны под запрос. 
-          </div>
+        <div class="card">
+          <div class="icon">2</div>
+          <h3>Забор и приёмка</h3>
+          <p>Организуем забор, проверим и подготовим партии.</p>
         </div>
-      </div>
-    </section>
-    <section id="offers">
-      <div class="section-narrow">
-        <div class="section-head">
-          <div>
-            <h2 class="lazy-animate">Спецпредложения</h2>
-            <p class="lead lazy-animate">Помогаем быстрее протестировать и масштабировать модель.</p>
-          </div>
+        <div class="card">
+          <div class="icon">3</div>
+          <h3>Маркировка и упаковка</h3>
+          <p>Выполняем по требованиям маркетплейсов.</p>
         </div>
-        <div class="offers">
-          <div class="offer lazy-animate">
-            <div class="badge-floating">-20%</div>
-            <h3>Скидка на старт</h3>
-            <p>Минус 20% на первые две партии (до 5 000 ед.) — безопасный тест сервиса.</p>
-            <button style="margin-top:14px;" onclick="openContact('Акция -20%')">Активировать</button>
-          </div>
-          <div class="offer lazy-animate">
-            <div class="badge-floating">Bundle</div>
-            <h3>Наборы бесплатно</h3>
-            <p>Комплектация наборов 0 ₽ при ежемесячном обороте от 10 000 единиц.</p>
-            <button style="margin-top:14px;" onclick="openContact('Bundle комплектация')">Узнать условия</button>
-          </div>
-          <div class="offer lazy-animate">
-            <div class="badge-floating">Priority</div>
-            <h3>Приоритетная линия</h3>
-            <p>Выделенная команда + сокращённое время обработки. Ограничено по слотам.</p>
-            <button style="margin-top:14px;" onclick="openContact('Приоритетная линия')">Забронировать</button>
-          </div>
+        <div class="card">
+          <div class="icon">4</div>
+          <h3>Отгрузка</h3>
+          <p>Доставка до WB/Ozon, контроль сроков и слотов.</p>
+        </div>
+        <div class="card">
+          <div class="icon">5</div>
+          <h3>Отчёт и счёт</h3>
+          <p>Счёт без скрытых платежей, полная детализация работ.</p>
+        </div>
+        <div class="card">
+          <div class="icon">6</div>
+          <h3>Поддержка</h3>
+          <p>Всегда на связи: Telegram, телефон, почта.</p>
         </div>
       </div>
     </section>
-    <section id="news">
-      <div class="section-narrow">
-        <div class="section-head">
-          <div>
-            <h2 class="lazy-animate">Новости</h2>
-            <p class="lead lazy-animate">Обновления сервиса и инфраструктуры.</p>
-          </div>
-          <div class="lazy-animate">
-            <button class="outline" onclick="shuffleNews()">Обновить ленту</button>
-          </div>
-        </div>
-        <div class="news-list" id="newsList"></div>
-      </div>
+
+    <section id="cta" class="section-narrow" style="text-align:center;">
+      <h2>Готовы начать?</h2>
+      <p class="lead" style="max-width:700px;margin:12px auto 24px;color:var(--muted);">
+        Напишите нам в Telegram — ответим быстро, рассчитаем стоимость без скрытых платежей и согласуем сроки.
+      </p>
+      <a class="btn" href="https://t.me/FulfillmentFly" target="_blank" rel="noopener">Написать в Telegram</a>
     </section>
-    <section id="faq">
-      <div class="section-narrow">
-        <div class="section-head">
-          <div>
-            <h2 class="lazy-animate">FAQ</h2>
-            <p class="lead lazy-animate">Коротко о типичных вопросах.</p>
-          </div>
+
+    <section id="contacts" class="section-narrow" style="padding-top:10px;">
+      <div class="card" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;">
+        <div style="font-weight:800;font-size:18px;">Контакты</div>
+        <div style="display:flex;gap:18px;flex-wrap:wrap;align-items:center;">
+          <a href="tel:+79660049292" style="font-weight:800;color:var(--text);">+7 966 004-92-92</a>
+          <a href="mailto:fulfilmentfly@gmail.com" style="color:var(--muted);">fulfilmentfly@gmail.com</a>
+          <a class="btn outline" href="https://t.me/FulfillmentFly" target="_blank" rel="noopener">Telegram</a>
         </div>
-        <div class="faq">
-          <details class="faq-item lazy-animate">
-            <summary>Можно подключить только часть операций?</summary>
-            <div class="content">Да, услуги модульные — оплата только за выбранные действия.</div>
-          </details>
-          <details class="faq-item lazy-animate">
-            <summary>Как фиксируете брак?</summary>
-            <div class="content">Фотофиксация и отметки в отчёте. Можно выгружать CSV.</div>
-          </details>
-          <details class="faq-item lazy-animate">
-            <summary>Делаете ли хранение?</summary>
-            <div class="content">Да — краткосрочное и длительное. Тариф зависит от объёма и сроков.</div>
-          </details>
-          <details class="faq-item lazy-animate">
-            <summary>Есть ли минимальный объём?</summary>
-            <div class="content">Жёсткого порога нет. Спецусловия — от ~2 000 ед./мес.</div>
-          </details>
-        </div>
-      </div>
-    </section>
-    <section id="contact">
-      <div class="section-narrow">
-        <div class="section-head">
-          <div>
-            <h2 class="lazy-animate">Связаться</h2>
-            <p class="lead lazy-animate">Опишите задачу или сразу напишите в Telegram — ответ быстро.</p>
-          </div>
-          <div class="lazy-animate">
-            <a class="telegram-btn" href="https://t.me/FulfillmentFly" target="_blank" rel="noopener">
-              <span style="font-size:18px;">✈️</span> Telegram
-            </a>
-          </div>
-        </div>
-        <div class="contact-extra lazy-animate" style="font-size:14px;color:var(--muted);">
-          Телефон: <a href="tel:+79660049292">+7 966 004 92 92</a><br>
-          Telegram: <a href="https://t.me/FulfillmentFly" target="_blank" rel="noopener">@FulfillmentFly</a><br>
-          Email: <a href="mailto:fulfilmentfly@gmail.com">fulfilmentfly@gmail.com</a>
-        </div>
-        <form class="contact-form lazy-animate" id="contactForm" onsubmit="submitForm(event)">
-          <input type="text" name="name" placeholder="Имя" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="text" name="company" placeholder="Компания / Магазин">
-          <textarea name="message" placeholder="Опишите задачу или интересующие услуги" rows="5" required></textarea>
-          <!-- Honeypot -->
-  <input type="text" name="website" autocomplete="off" tabindex="-1" style="position:absolute;left:-9999px;opacity:0;">
-  <input type="hidden" name="tstart" id="tstartField">
-  <input type="hidden" name="ua" id="uaField">
-  <input type="hidden" name="referer" id="refField">
-          <div class="inline-note">Отправляя форму, вы соглашаетесь на обработку данных для ответа.</div>
-          <button type="submit">Отправить</button>
-        </form>
       </div>
     </section>
   </main>
-  <footer>
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>Fulfillment Fly</h4>
-        <p style="color:var(--muted);font-size:14px;">Операционная часть под нашим контролем — вы масштабируете продажи.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Навигация</h4>
-        <ul>
-          <li><a href="#about">О компании</a></li>
-          <li><a href="#services">Услуги</a></li>
-          <li><a href="#price">Прайс</a></li>
-          <li><a href="#offers">Акции</a></li>
-          <li><a href="#news">Новости</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Контакты</h4>
-        <ul>
-          <li>Тел: <a href="tel:+79660049292">+7 966 004 92 92</a></li>
-          <li>Telegram: <a href="https://t.me/FulfillmentFly" target="_blank">@FulfillmentFly</a></li>
-          <li>Email: <a href="mailto:fulfilmentfly@gmail.com">fulfilmentfly@gmail.com</a></li>
-          <li>Пн–Сб 09:00–19:00</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Документы</h4>
-        <ul>
-          <li><a href="#">Политика конфиденциальности</a></li>
-          <li><a href="#">Договор оферты</a></li>
-          <li><a href="#">API (скоро)</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="branding-foot">
-      © <span id="year"></span> Fulfillment Fly. Все права защищены.
-    </div>
-  </footer>
-  <div class="floating-contact">
-    <a href="https://t.me/FulfillmentFly" title="Написать в Telegram" target="_blank" rel="noopener">✈️</a>
-    <a class="phone" href="tel:+79660049292" title="Позвонить">📞</a>
-  </div>
-  <div class="toast" id="toast">Сообщение отправлено</div>
-  <script>
-    const servicesData = [
-      { title:"Забор от поставщика", category:"Логистика", unit:"рейс", price:"от 2 000 ₽", description:"Рынки / площадки: ТЯК Москва, Садовод, Южные ворота." },
-      { title:"Забор в пределах МКАД", category:"Логистика", unit:"до 1 м³", price:"от 2 500 ₽", description:"Паллет / партия до 1 м³." },
-      { title:"Забор за МКАД", category:"Логистика", unit:"до 1 м³", price:"3 000 ₽ + 35 ₽/км", description:"Расчёт от МКАД." },
-      { title:"Приём + идентификация", category:"Обработка", unit:"ед.", price:"от 3 ₽", description:"Пересчёт и фиксация." },
-      { title:"Осмотр на брак", category:"Контроль", unit:"ед.", price:"5 ₽", description:"Визуальный контроль дефектов." },
-      { title:"Расширенная проверка", category:"Контроль", unit:"ед.", price:"от 15 ₽", description:"Швы, молнии, функционал, нитки." },
-      { title:"Маркировка", category:"Маркировка", unit:"ед.", price:"5 ₽", description:"Одинарная; доп. этикетка +5 ₽." },
-      { title:"Комплектация до 10 ед.", category:"Комплектация", unit:"набор", price:"10 ₽", description:"Группировка SKU." },
-      { title:"Упаковка БОПП (30×40)", category:"Упаковка", unit:"ед.", price:"8 ₽", description:"С клапаном, с материалом." },
-      { title:"Bubble (до 60 см)", category:"Упаковка", unit:"ед.", price:"30 ₽", description:"С учётом материала." },
-      { title:"Хранение короб", category:"Хранение", unit:"сутки", price:"20 ₽", description:"Формат 60×40×40." },
-      { title:"Создание карточки", category:"ЛК", unit:"SKU", price:"от 500 ₽", description:"Данные клиента." }
-    ];
-    const priceData = [
-      { group:"Логистика: забор", service:"Забор товара от поставщика / рынка (ТЯК Москва, Садовод, Южные ворота)", unit:"рейс", price:"от 2 000 ₽", comment:"Зависит от объёма и числа точек" },
-      { group:"Логистика: забор", service:"От поставщика в пределах МКАД (до 1 м³)", unit:"рейс", price:"от 2 500 ₽", comment:"Паллет/партия" },
-      { group:"Логистика: забор", service:"От поставщика за МКАД (до 1 м³)", unit:"рейс", price:"3 000 ₽ + 35 ₽/км", comment:"Расчёт от МКАД" },
-      { group:"Логистика: забор", service:"Свыше 1 м³", unit:"—", price:"Индивидуально", comment:"По запросу" },
-      { group:"Логистика: доставка до МП", service:"Доставка 1–3 короба (до 1 м³) Коледино/Электросталь", unit:"короб", price:"500 ₽", comment:"МП склад" },
-      { group:"Логистика: доставка до МП", service:"Доставка 4–9 коробов (до 1 м³) Коледино/Электросталь", unit:"поставка", price:"2 500 ₽", comment:"" },
-      { group:"Логистика: доставка до МП", service:"Доставка 10–16 коробов (1 паллета) Коледино/Электросталь", unit:"поставка", price:"3 000 ₽", comment:"" },
-      { group:"Логистика: доставка до МП", service:"Доставка от 2 паллет", unit:"паллета", price:"2 500 ₽", comment:"За паллету" },
-      { group:"Логистика: доставка до МП", service:"Отправка по FBS", unit:"короб", price:"от 750 ₽", comment:"" },
-      { group:"Логистика: доставка до МП", service:"Доставка на другие склады МП (WB, Ozon)", unit:"короб", price:"от 500 ₽", comment:"Удалённость и загрузка" },
-      { group:"Обработка товара", service:"Фасовка", unit:"ед.", price:"2 ₽", comment:"" },
-      { group:"Обработка товара", service:"Пересчёт при приёмке (инвентаризация)", unit:"ед.", price:"5 ₽", comment:"" },
-      { group:"Обработка товара", service:"Приём товара с идентификацией и пересчётом", unit:"ед.", price:"от 3 ₽", comment:"" },
-      { group:"Обработка товара", service:"Визуальный осмотр (пятна, дырки и т.д.)", unit:"ед.", price:"5 ₽", comment:"" },
-      { group:"Обработка товара", service:"Расширенная проверка (швы, молнии, включение/выключение)", unit:"ед.", price:"от 15 ₽", comment:"Удаление ниток" },
-      { group:"Обработка товара", service:"Маркировка одинарная (каждая доп. +5 ₽)", unit:"ед.", price:"5 ₽", comment:"" },
-      { group:"Обработка товара", service:"Биркитирование", unit:"ед.", price:"10 ₽", comment:"" },
-      { group:"Комплектация", service:"Проверка комплектности", unit:"ед.", price:"5 ₽", comment:"" },
-      { group:"Комплектация", service:"Комплектация до 5 ед.", unit:"набор", price:"5 ₽", comment:"" },
-      { group:"Комплектация", service:"Комплектация до 10 ед.", unit:"набор", price:"10 ₽", comment:"" },
-      { group:"Комплектация", service:"Комплектация до 20 ед.", unit:"набор", price:"17 ₽", comment:"" },
-      { group:"Иные манипуляции", service:"Вложение инструкции / сертификата / вкладыша (печать)", unit:"ед.", price:"5 ₽", comment:"" },
-      { group:"Иные манипуляции", service:"Доп. работы (скотч, наклейки)", unit:"ед.", price:"от 1 ₽", comment:"" },
-      { group:"Иные манипуляции", service:"Замер изделия", unit:"ед.", price:"150 ₽", comment:"" },
-      { group:"Иные манипуляции", service:"Удаление старого ШК", unit:"ед.", price:"5 ₽", comment:"" },
-      { group:"Упаковка: БОПП пакеты", service:"БОПП с клапаном 8×10 см", unit:"ед.", price:"5 ₽", comment:"С материалом" },
-      { group:"Упаковка: БОПП пакеты", service:"БОПП с клапаном 15×12 см", unit:"ед.", price:"6 ₽", comment:"" },
-      { group:"Упаковка: БОПП пакеты", service:"БОПП с клапаном 36×23 см", unit:"ед.", price:"7 ₽", comment:"" },
-      { group:"Упаковка: БОПП пакеты", service:"БОПП с клапаном 30×40 см", unit:"ед.", price:"8 ₽", comment:"" },
-      { group:"Упаковка: БОПП пакеты", service:"БОПП с клапаном 45×32 см", unit:"ед.", price:"9 ₽", comment:"" },
-      { group:"Упаковка: Zip Lock", service:"Zip Lock 15×20 см 45 мкм", unit:"ед.", price:"10 ₽", comment:"С материалом" },
-      { group:"Упаковка: Zip Lock", service:"Zip Lock 20×30 см 45 мкм", unit:"ед.", price:"12 ₽", comment:"" },
-      { group:"Упаковка: Zip Lock", service:"Zip Lock 30×40 см 45 мкм", unit:"ед.", price:"14 ₽", comment:"" },
-      { group:"Упаковка: Zip Lock", service:"Zip Lock 40×50 см 45 мкм", unit:"ед.", price:"16 ₽", comment:"" },
-      { group:"Упаковка: Zip Lock с бегунком", service:"С бегунком 20×30 / 25×35 см 70 мкм мат.", unit:"ед.", price:"25 ₽", comment:"" },
-      { group:"Упаковка: Zip Lock с бегунком", service:"С бегунком 30×40 см 70 мкм", unit:"ед.", price:"30 ₽", comment:"Матовый / ..." },
-      { group:"Упаковка: Zip Lock с бегунком", service:"С бегунком 40×55 см 70 мкм", unit:"ед.", price:"45 ₽", comment:"" },
-      { group:"Упаковка: Zip Lock с бегунком", service:"С бегунком 50×70 см 70 мкм", unit:"ед.", price:"50 ₽", comment:"" },
-      { group:"Упаковка: Zip Lock с бегунком", service:"Иные размеры пакетов", unit:"—", price:"Индивидуально", comment:"Под запрос" },
-      { group:"Упаковка: прочее", service:"Упаковка в пакет без учёта материала", unit:"ед.", price:"5 ₽", comment:"Материал клиента" },
-      { group:"Упаковка: ВПП", service:"ВПП сумма сторон до 20 см", unit:"ед.", price:"13 ₽", comment:"С материалом" },
-      { group:"Упаковка: ВПП", service:"ВПП сумма сторон до 60 см", unit:"ед.", price:"30 ₽", comment:"" },
-      { group:"Упаковка: ВПП", service:"ВПП сумма сторон до 100 см", unit:"ед.", price:"58 ₽", comment:"" },
-      { group:"Упаковка: прочее", service:"Стрейч плёнка", unit:"ед.", price:"от 7 ₽", comment:"Размер" },
-      { group:"Упаковка: прочее", service:"Запайка", unit:"ед.", price:"от 17 ₽", comment:"Размер" },
-      { group:"Формирование коробов", service:"Короб 60×40×40", unit:"короб", price:"120 ₽", comment:"" },
-      { group:"Формирование коробов", service:"Маркировка коробов (один штрих-код)", unit:"короб", price:"5 ₽", comment:"" },
-      { group:"Погрузочно-разгрузочные работы", service:"Погрузочно-разгрузочные (1 короб / мешок)", unit:"ед.", price:"50 ₽", comment:"" },
-      { group:"Погрузочно-разгрузочные работы", service:"Снятие обрешётки", unit:"короб", price:"400 ₽", comment:"" },
-      { group:"Погрузочно-разгрузочные работы", service:"Паллетирование", unit:"паллета", price:"450 ₽", comment:"" },
-      { group:"Хранение", service:"Хранение короб 60×40×40 (сутки)", unit:"короб/сутки", price:"20 ₽", comment:"" },
-      { group:"Хранение", service:"Хранение паллета 80×120×210 (1 м³) сутки", unit:"м³/сутки", price:"150 ₽", comment:"" },
-      { group:"Работа с личным кабинетом", service:"Создание карточки (точные данные клиента)", unit:"SKU", price:"от 500 ₽", comment:"" },
-      { group:"Работа с личным кабинетом", service:"Создание карточки без точных данных", unit:"SKU", price:"от 1 000 ₽", comment:"" },
-      { group:"Работа с личным кабинетом", service:"Создание/редактирование этикетки (ШК)", unit:"шаблон", price:"200 ₽", comment:"+50 ₽ за правку" },
-      { group:"Работа с личным кабинетом", service:"Оформление поставки (до 10 SKU)", unit:"заказ", price:"500 ₽", comment:"+50 ₽ за SKU свыше 10" },
-      { group:"Работа с личным кабинетом", service:"Оформление поставки FBS (до 10 ед.)", unit:"заказ", price:"300 ₽", comment:"" },
-      { group:"Работа с личным кабинетом", service:"Полное ведение ЛК", unit:"—", price:"Индивидуально", comment:"" },
-      { group:"Работа с личным кабинетом", service:"Иные услуги по ЛК", unit:"—", price:"Индивидуально", comment:"" },
-      { group:"Продвижение", service:"Переупаковка выкупов (удаление старого ШК и т.п. + новый ШК)", unit:"ед.", price:"10 ₽", comment:"" },
-      { group:"Продвижение", service:"Забор с ПВЗ (до 5 ед.)", unit:"забор", price:"150 ₽", comment:"" },
-      { group:"Контент", service:"Инфографика (от 1 фото)", unit:"ед.", price:"от 300 ₽", comment:"" },
-      { group:"Контент", service:"Услуги дизайнера", unit:"час/пакет", price:"от 1 000 ₽", comment:"" },
-      { group:"Контент", service:"Фото для отзыва на человеке", unit:"шт.", price:"150 ₽", comment:"" },
-      { group:"Контент", service:"Предметное фото", unit:"шт.", price:"от 200 ₽", comment:"" },
-      { group:"Контент", service:"Фото для отзыва (предметное)", unit:"шт.", price:"50 ₽", comment:"" },
-      { group:"Дополнительные услуги", service:"Поиск/подбор поставщика (Китай, Киргизия)", unit:"поиск", price:"от 3 000 ₽", comment:"" },
-      { group:"Дополнительные услуги", service:"Подбор поставщика на оптовых рынках", unit:"% закупки", price:"10% от суммы", comment:"Мин. 20 000 ₽" },
-      { group:"Дополнительные услуги", service:"Глажка товара", unit:"ед.", price:"от 10 ₽", comment:"" },
-      { group:"Дополнительные услуги", service:"Стирка", unit:"ед.", price:"от 150 ₽", comment:"" },
-      { group:"Дополнительные услуги", service:"Отпаривание товара", unit:"ед.", price:"от 15 ₽", comment:"" }
-    ];
-    const newsData = [
-      { title:"Расширен блок упаковки", date:"2025-09-18", text:"Добавили отдельные категории пакетов и bubble-позиций." },
-      { title:"Оптимизирована выдача прайса", date:"2025-09-17", text:"Теперь выгрузка сгруппирована по блокам." },
-      { title:"Обновлена логистика", date:"2025-09-15", text:"Добавлены тарифы на паллетные отгрузки." },
-      { title:"Инфраструктура хранения", date:"2025-09-10", text:"Повышена ёмкость ячеек под сезон." },
-      { title:"Контент-пакеты", date:"2025-09-08", text:"Запустили оформление карточек с фото." }
-    ];
-    function renderServices(filter="Все"){
-      const grid=document.getElementById('servicesGrid');
-      grid.innerHTML="";
-      servicesData.filter(s=>filter==="Все"||s.category===filter).forEach(s=>{
-        const el=document.createElement('div');
-        el.className='card lazy-animate';
-        el.innerHTML=`
-          <h3>${s.title}</h3>
-          <p style="flex-grow:1;color:var(--muted);">${s.description||""}</p>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span style="font-size:12px;font-weight:600;letter-spacing:.8px;">${s.category}</span>
-            <span style="font-weight:700;">${s.price}</span>
-          </div>
-        `;
-        grid.appendChild(el);
-      });
-      lazyObserve();
-    }
-    function renderServiceFilters(){
-      const cats=["Все",...new Set(servicesData.map(s=>s.category))];
-      const wrap=document.getElementById('servicesFilter');
-      wrap.innerHTML="";
-      cats.forEach(c=>{
-        const b=document.createElement('button');
-        b.textContent=c;
-        if(c==="Все") b.classList.add('active');
-        b.onclick=()=>filterServices(c);
-        wrap.appendChild(b);
-      });
-    }
-    function filterServices(cat){
-      document.querySelectorAll('.services-filter button').forEach(b=>b.classList.toggle('active',b.textContent===cat));
-      renderServices(cat);
-    }
-    function renderPrice(){
-      const body=document.querySelector('#priceTable tbody');
-      body.innerHTML="";
-      let currentGroup="";
-      priceData.forEach(row=>{
-        if(row.group!==currentGroup){
-          currentGroup=row.group;
-          const gr=document.createElement('tr');
-          gr.className='group-row';
-          gr.innerHTML=`<td colspan="4">${currentGroup}</td>`;
-          body.appendChild(gr);
-        }
-        const tr=document.createElement('tr');
-        tr.innerHTML=`
-          <td><strong>${row.service}</strong></td>
-          <td>${row.unit||""}</td>
-          <td style="font-weight:600;white-space:nowrap;">${row.price}</td>
-          <td style="color:var(--muted);">${row.comment||""}</td>
-        `;
-        body.appendChild(tr);
-      });
-    }
-    function renderNews(list=newsData){
-      const container=document.getElementById('newsList');
-      container.innerHTML=list.map(n=>`
-        <div class="news-item lazy-animate">
-          <time>${n.date}</time>
-          <h4>${n.title}</h4>
-          <p style="color:var(--muted);">${n.text}</p>
-        </div>
-      `).join('');
-      lazyObserve();
-    }
-    function shuffleNews(){
-      const shuffled=[...newsData].sort(()=>Math.random()-0.5);
-      renderNews(shuffled);
-    }
-    function downloadPrice(){
-      const lines=[];
-      let g="";
-      lines.push("Прайс Fulfillment Fly");
-      lines.push("+7 966 004 92 92 | Telegram @FulfillmentFly | Email fulfilmentfly@gmail.com");
-      lines.push("==============================================================","");
-      priceData.forEach(r=>{
-        if(r.group!==g){
-          g=r.group;
-          lines.push("");
-          lines.push("["+g+"]");
-        }
-        lines.push(`${r.service} — ${r.price}${r.unit?(" / "+r.unit):""}${r.comment?(" :: "+r.comment):""}`);
-      });
-      const blob=new Blob([lines.join('\n')],{type:"text/plain"});
-      const a=document.createElement('a');
-      a.href=URL.createObjectURL(blob);
-      a.download='price_fulfillment_fly.txt';
-      a.click();
-      URL.revokeObjectURL(a.href);
-    }
-    function submitForm(e){
-      const form = document.getElementById('contactForm');
-      const tstartField = document.getElementById('tstartField');
-      const uaField = document.getElementById('uaField');
-      const refField = document.getElementById('refField');
 
-      tstartField.value = Date.now();
-      uaField.value = navigator.userAgent;
-      refField.value = document.referrer || location.href;
-      form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      const fd = new FormData(form);
-      // Клиентская мини-валидация
-      if ((fd.get('message')||'').trim().length < 10){
-        showToast("Сообщение слишком короткое");
-        return;
-      }
-      showToast("Отправка...");
-      try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbyhGvZwiTI8aEtDao1y5OLDkwmp2Yp2KgFHsgYe9r5TffVfOx2SbvLnsV6IXSFTi9Kx/exec", {
-          method:'POST',
-          body: fd
-        });
-        const data = await res.json().catch(()=>({ok:false,error:'bad_json'}));
-        if (data.ok){
-          form.reset();
-          showToast("Отправлено ✅");
-          tstartField.value = Date.now(); // обновим точку для следующей отправки
-        } else {
-          showToast("Ошибка: " + (data.error||'сервер'));
-        }
-      } catch(err){
-        console.error(err);
-        showToast("Сеть недоступна");
-      }
+  <footer>
+    <div>© Fulfillment Fly, 2025</div>
+    <div></div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const THEME_KEY = 'ff_theme';
+    function setTheme(v){ root.setAttribute('data-theme', v || ''); localStorage.setItem(THEME_KEY, v||''); }
+    function initTheme(){
+      const saved = localStorage.getItem(THEME_KEY);
+      if(saved!==null){ setTheme(saved); return; }
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark ? 'dark' : '');
+    }
+    toggle?.addEventListener('click', ()=>{
+      const cur = root.getAttribute('data-theme');
+      setTheme(cur==='dark' ? '' : 'dark');
     });
-    }
-    function openContact(ctx){
-      document.querySelector('#contact').scrollIntoView({behavior:'smooth'});
-      showToast("Запрос: "+ctx);
-    }
-    function showToast(msg){
-      const t=document.getElementById('toast');
-      t.textContent=msg;
-      t.classList.add('show');
-      setTimeout(()=>t.classList.remove('show'),3800);
-    }
-    const themeToggle=document.getElementById('themeToggle');
-    function setTheme(th){
-      document.documentElement.setAttribute('data-theme',th);
-      localStorage.setItem('ff-theme',th);
-    }
-    themeToggle.addEventListener('click',()=>{
-      const cur=document.documentElement.getAttribute('data-theme');
-      setTheme(cur==='dark'?'light':'dark');
-    });
-    (function initTheme(){
-      const saved=localStorage.getItem('ff-theme');
-      if(saved) setTheme(saved);
-      else setTheme(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
-    })();
-    document.getElementById('scrollToPrice').onclick=()=>document.querySelector('#price').scrollIntoView({behavior:'smooth'});
-    const navLinks=document.querySelectorAll('nav a');
-    const sections=[...navLinks].map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    function onScroll(){
-      const pos=window.scrollY+window.innerHeight/3;
-      sections.forEach((sec,i)=>{
-        if(pos>=sec.offsetTop && pos<sec.offsetTop+sec.offsetHeight){
-          navLinks.forEach(l=>l.classList.remove('active'));
-          navLinks[i].classList.add('active');
-        }
-      });
-    }
-    window.addEventListener('scroll',onScroll);
-    let observer;
-    function lazyObserve(){
-      const els=document.querySelectorAll('.lazy-animate:not(.visible)');
-      if('IntersectionObserver' in window){
-        observer=observer||new IntersectionObserver(entries=>{
-          entries.forEach(en=>{
-            if(en.isIntersecting){
-              en.target.classList.add('visible');
-              observer.unobserve(en.target);
-            }
-          });
-        },{threshold:0.15});
-        els.forEach(el=>observer.observe(el));
-      } else { els.forEach(el=>el.classList.add('visible')); }
-    }
-    document.getElementById('year').textContent=new Date().getFullYear();
-    renderServiceFilters();
-    renderServices();
-    renderPrice();
-    renderNews();
-    lazyObserve();
+    initTheme();
   </script>
+</body>
+</html>
 </body>
 </html>
